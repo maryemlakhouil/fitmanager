@@ -1,3 +1,24 @@
+<?php
+$servername = "localhost";
+$username = "root"; 
+$password = "";
+$dbname = "fitmanager";
+
+// try {
+//     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//     echo "Connected successfully (PDO)";
+
+// } catch(PDOException $e) {
+//     echo "Connection failed: " . $e->getMessage();
+// }
+
+// $conn = null; // Close connection
+
+// // Le nombre Total de cours 
+// $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -85,6 +106,7 @@
         <canvas id="chart-equipements"></canvas>
       </div>
     </section>
+    
   </main>
 
   <!-- Chart.js -->
@@ -123,3 +145,4 @@
   </script> -->
 </body>
 </html>
+

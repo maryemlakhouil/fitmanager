@@ -45,4 +45,3 @@ select * from cours_equipements;
 
 
 
-
