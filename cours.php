@@ -119,7 +119,6 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
     </div>
   </div>
 
-
   <!-- MODAL AJOUTER -->
   <div id="modal-add" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-6 rounded-lg w-96">
@@ -143,12 +142,11 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
     </div>
   </div>
 
-
   <!-- MODAL MODIFIER -->
   <div id="modal-edit" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-6 rounded-lg w-96">
 
-      <h2 class="text-2xl font-semibold mb-4">Modifier un cours</h2>
+      <h2 class="text-2xl font-semibold mb-4">Modifier Un cours</h2>
 
       <form method="POST">
         <input type="hidden" name="courId" id="edit-id">
@@ -161,9 +159,8 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
         <input type="number" name="nbmax" id="edit-nbmax" class="w-full p-2 border rounded mb-3" required>
 
         <button name="update" class="bg-yellow-600 text-white px-4 py-2 rounded">Modifier</button>
-        <button type="button" onclick="document.getElementById('modal-edit').classList.add('hidden')" class="ml-2">Annuler</button>
+        <button type="button" onclick="document.getElementById('modal-edit').classList.add('hidden')" class="ml-2 bg-red-300 text-white px-4 py-2 rounded">Annuler</button>
       </form>
-
     </div>
   </div>
 
@@ -180,6 +177,5 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
       document.getElementById('modal-edit').classList.remove('hidden');
     }
   </script>
-
 </body>
 </html>
