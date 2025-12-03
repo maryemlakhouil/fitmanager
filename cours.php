@@ -176,6 +176,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
 
       document.getElementById('modal-edit').classList.remove('hidden');
     }
+    
   </script>
 </body>
 </html>
