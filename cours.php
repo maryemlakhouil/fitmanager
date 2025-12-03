@@ -16,7 +16,6 @@ if (isset($_POST['add'])) {
     header("Location: cours.php");
     exit;
 }
-
 /* ----------------------- MODIFIER UN COURS ------------------------ */
 if (isset($_POST['update'])) {
     $stmt = $pdo->prepare("UPDATE cours 
@@ -38,7 +37,7 @@ if (isset($_POST['update'])) {
 /* ----------------------- SUPPRIMER UN COURS ------------------------ */
 if(isset($_POST['delete'])){
     $stmt =$pdo->prepare("DELETE FROM cours WHERE courId=?");
-    $stmt->execute(['courId']);
+    $stmt->execute([$_POST['courId']]);
     header("Location:cours.php");
     exit;
 }
@@ -173,7 +172,6 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
       document.getElementById('edit-dateFin').value = dateFin;
       document.getElementById('edit-heure').value = heure;
       document.getElementById('edit-nbmax').value = nbmax;
-
       document.getElementById('modal-edit').classList.remove('hidden');
     }
     
