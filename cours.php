@@ -31,15 +31,15 @@ if (isset($_POST['update'])) {
         $_POST['nbmax'],
         $_POST['courId']
     ]);
-    header("Location: cours.php");
+    header("Location:cours.php");
     exit;
 }
 
 /* ----------------------- SUPPRIMER UN COURS ------------------------ */
-if (isset($_POST['delete'])) {
-    $stmt = $pdo->prepare("DELETE FROM cours WHERE courId=?");
+if(isset($_POST['delete'])){
+    $stmt =$pdo->prepare("Delete from cours where courId=?");
     $stmt->execute([$_POST['courId']]);
-    header("Location: cours.php");
+    header("location:cours.php");
     exit;
 }
 
@@ -62,9 +62,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
 
     <h1 class="text-3xl font-bold mb-6">Gestion des Cours</h1>
     <!-- Boutton Pour Ajouter Un cours -->
-    <button 
-      onclick="document.getElementById('modal-add').classList.remove('hidden')" 
-      class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">
+    <button onclick="document.getElementById('modal-add').classList.remove('hidden')" class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">
         + Ajouter un cours
     </button>
 
