@@ -1,8 +1,8 @@
+/*Creation du Base De donnée*/
 create DATABASE Fitmanager;
 USE Fitmanager;
 
 /* création des tables */
-
 /* Table cours */
 
 create table cours(
@@ -42,6 +42,17 @@ create table cours_equipements(
 select * from cours;
 select * from equipements;
 select * from cours_equipements;
+select * from cours order by dateDebut desc;
 
+/* Ajouter Un colonne au tableau sans form*/
+insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours1","yoga","2025-2-3","2026-3-4",4,20);
+insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours2","Musculation","2025-11-3","2026-12-4",300,20);
+insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours3","Cardio","2025-11-3","2026-12-4",11300,20);
+
+/*Supprimer Un cours du tableau cours*/
+
+delete from cours where courId = 1 ;
+
+/*Modifier Un cours */
 
 

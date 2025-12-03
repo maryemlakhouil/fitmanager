@@ -4,7 +4,7 @@ require_once "connex.php";
 /* ----------------------- AJOUTER UN COURS ------------------------ */
 if (isset($_POST['add'])) {
     $stmt = $pdo->prepare("INSERT INTO cours (nom, categorie, dateDebut, dateFin, heure, nbmax)
-                           VALUES (?, ?, ?, ?, ?, ?)");
+                        VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->execute([
         $_POST['nom'],
         $_POST['categorie'],
@@ -47,6 +47,8 @@ if (isset($_POST['delete'])) {
 $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
+<!--Les Formulaires -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,8 +61,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
   <div class="max-w-5xl mx-auto">
 
     <h1 class="text-3xl font-bold mb-6">Gestion des Cours</h1>
-
-    <!-- BTN AJOUTER -->
+    <!-- Boutton Pour Ajouter Un cours -->
     <button 
       onclick="document.getElementById('modal-add').classList.remove('hidden')" 
       class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">
