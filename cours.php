@@ -90,9 +90,8 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
             <td class="p-3"><?= $c['nbmax'] ?></td>
 
             <td class="p-3 flex gap-2">
-
               <!-- Boutton Pour modifier un cours -->
-              <button onclick="openEditModal(
+                <button onclick="openEditModal(
                     '<?= $c['courId'] ?>',
                     '<?= $c['nom'] ?>',
                     '<?= $c['categorie'] ?>',
@@ -104,16 +103,15 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
                 class="bg-yellow-500 text-white px-3 py-1 rounded">
                 Modifier
               </button>
-
               <!-- BTN SUPPRIMER -->
-              <form method="POST" onsubmit="return confirm('Supprimer ce cours ?');">
+              <form method="POST" onsubmit="return confirm('Voulez-vous Supprimer ce cours ?');">
                 <input type="hidden" name="courId" value="<?= $c['courId'] ?>">
                 <button name="delete" class="bg-red-600 text-white px-3 py-1 rounded">
                   Supprimer
                 </button>
               </form>
-
             </td>
+
           </tr>
         <?php endforeach; ?>
         </tbody>
@@ -125,19 +123,21 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
   <!-- MODAL AJOUTER -->
   <div id="modal-add" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-6 rounded-lg w-96">
-
       <h2 class="text-2xl font-semibold mb-4">Ajouter un cours</h2>
 
       <form method="POST">
         <input type="text" name="nom" placeholder="Nom" required class="w-full p-2 border rounded mb-3">
         <input type="text" name="categorie" placeholder="Catégorie" required class="w-full p-2 border rounded mb-3">
+        <label for="dateDebut"class="font-semibold text-gray-500">Date Debut :</label><br>
         <input type="date" name="dateDebut" required class="w-full p-2 border rounded mb-3">
+        <label for="dateFin"class="font-semibold text-gray-500">Date Fin :</label><br>
         <input type="date" name="dateFin" required class="w-full p-2 border rounded mb-3">
+        <label for="heure"class="font-semibold text-gray-500">Heure :</label><br>
         <input type="time" name="heure" required class="w-full p-2 border rounded mb-3">
         <input type="number" name="nbmax" placeholder="Max participants" required class="w-full p-2 border rounded mb-3">
 
-        <button name="add" class="bg-blue-600 text-white px-4 py-2 rounded">Ajouter</button>
-        <button type="button" onclick="document.getElementById('modal-add').classList.add('hidden')" class="ml-2">Annuler</button>
+        <button name="add" class="bg-green-500 text-white px-4 py-2 rounded">Ajouter</button>
+        <button type="button" onclick="document.getElementById('modal-add').classList.add('hidden')" class="bg-red-200 ml-2 text-white px-4 py-2 rounded">Annuler</button>
       </form>
 
     </div>
