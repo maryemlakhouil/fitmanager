@@ -37,9 +37,9 @@ if (isset($_POST['update'])) {
 
 /* ----------------------- SUPPRIMER UN COURS ------------------------ */
 if(isset($_POST['delete'])){
-    $stmt =$pdo->prepare("Delete from cours where courId=?");
-    $stmt->execute([$_POST['courId']]);
-    header("location:cours.php");
+    $stmt =$pdo->prepare("DELETE FROM cours WHERE courId=?");
+    $stmt->execute(['courId']);
+    header("Location:cours.php");
     exit;
 }
 
@@ -62,7 +62,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
 
     <h1 class="text-3xl font-bold mb-6">Gestion des Cours</h1>
     <!-- Boutton Pour Ajouter Un cours -->
-    <button onclick="document.getElementById('modal-add').classList.remove('hidden')" class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">
+    <button onclick="document.getElementById('modal-add').classList.remove('hidden')" class="bg-[#4DA8DA] text-white px-4 py-2 rounded-lg mb-4">
         + Ajouter un cours
     </button>
 
@@ -76,7 +76,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
             <th class="p-3">Dates</th>
             <th class="p-3">Heure</th>
             <th class="p-3">Max</th>
-            <th class="p-3">Actions</th>
+            <th class="p-3">TU PEUT</th>
           </tr>
         </thead>
 
@@ -85,15 +85,14 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
           <tr class="border-b">
             <td class="p-3"><?= $c['nom'] ?></td>
             <td class="p-3"><?= $c['categorie'] ?></td>
-            <td class="p-3"><?= $c['dateDebut'] ?> → <?= $c['dateFin'] ?></td>
+            <td class="p-3"><?= $c['dateDebut'] ?> -> <?= $c['dateFin'] ?></td>
             <td class="p-3"><?= $c['heure'] ?></td>
             <td class="p-3"><?= $c['nbmax'] ?></td>
 
             <td class="p-3 flex gap-2">
 
-              <!-- BTN MODIFIER -->
-              <button 
-                onclick="openEditModal(
+              <!-- Boutton Pour modifier un cours -->
+              <button onclick="openEditModal(
                     '<?= $c['courId'] ?>',
                     '<?= $c['nom'] ?>',
                     '<?= $c['categorie'] ?>',

@@ -51,8 +51,14 @@ insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours3","
 
 /*Supprimer Un cours du tableau cours*/
 
-delete from cours where courId = 1 ;
+delete from cours where courId = 6;
 
 /*Modifier Un cours */
+
+Update cours
+    SET nom="sience", categorie="Yoga", nbmax=30
+    WHERE courId=7;
+
+/* Ajouter Un equipement */
 
 
