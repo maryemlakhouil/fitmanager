@@ -15,7 +15,7 @@ if(isset($_POST['add'])) {
     header("Location: equipements.php");
     exit;
 }
-/*--------- Modifier Un Equipements */
+/*--------- Modifier Un Equipements -------*/
 
 if(isset($_POST['update'])) {
     $stmt = $pdo->prepare("UPDATE equipements 
@@ -31,10 +31,16 @@ if(isset($_POST['update'])) {
     header("Location: equipements.php");
     exit;
 }
+/* ---------Supprimer Un equipemets---------*/
+
+if (isset($_POST['delete'])) {
+    $stmt = $pdo->prepare("DELETE FROM equipements WHERE equipe_ID=?");
+    $stmt->execute([$_POST['equipe_ID']]);
+    header("Location: equipements.php");
+    exit;
+}
 
 /* --------Consulter la liste des equipements -------------- */
-
 $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchAll(PDO::FETCH_ASSOC);
-
 
 ?>

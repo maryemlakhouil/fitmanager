@@ -40,7 +40,7 @@ $dbname = "fitmanager";
     <nav class="flex flex-col space-y-3">
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Dashboard</a>
       <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
+      <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Statistiques</a>
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
     </nav>
