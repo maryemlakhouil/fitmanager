@@ -174,7 +174,6 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
       document.getElementById('edit-nbmax').value = nbmax;
       document.getElementById('modal-edit').classList.remove('hidden');
     }
-    
   </script>
 </body>
 </html>
