@@ -42,6 +42,7 @@ if (isset($_POST['delete'])) {
 
 /* --------Consulter la liste des equipements -------------- */
 $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!-- Commancer La Partie Front End-->
@@ -183,9 +184,6 @@ $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchA
       document.getElementById('modal-edit').classList.remove('hidden');
     }
   </script>
-
-
- 
 </body>
 </html>
 
