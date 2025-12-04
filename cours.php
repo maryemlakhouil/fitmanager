@@ -49,13 +49,13 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
 <!--Les Formulaires -->
 
 <!DOCTYPE html>
-<html lang="fr">
-<head>
+ <html lang="fr">
+ <head>
   <meta charset="UTF-8">
   <title>Gestion des Cours</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 p-8">
+ </head>
+ <body class="bg-gray-100 p-8">
 
   <div class="max-w-5xl mx-auto">
 
@@ -142,7 +142,7 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
   </div>
 
   <!-- MODAL MODIFIER -->
-  <div id="modal-edit" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+<div id="modal-edit" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
     <div class="bg-white p-6 rounded-lg w-96">
 
       <h2 class="text-2xl font-semibold mb-4">Modifier Un cours</h2>

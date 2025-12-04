@@ -64,6 +64,7 @@ Update cours
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe1","Tapis de course", 7, "bon")
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe2","Haltères", 17, "bon")
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe3","Ballons", 17, "moyen")
+INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe4","Ballons", 20, "bon")
 
 /*Modifier Un equipements */
 
