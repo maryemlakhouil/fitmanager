@@ -61,4 +61,21 @@ Update cours
 
 /* Ajouter Un equipement */
 
+INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe1","Tapis de course", 7, "bon")
+INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe2","Haltères", 17, "bon")
+INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe3","Ballons", 17, "moyen")
+
+/*Modifier Un equipements */
+
+Update equipements
+    SET type="Ballons",etat="moyen"
+    WHERE equipe_ID=1;
+
+/* Suprimer Un Equipements */
+
+DELETE FROM equipements where equipe_ID=1;
+
+/*Consulter la liste d'equipements*/
+
+SELECT * FROM equipements ORDER BY nom DESC;
 
