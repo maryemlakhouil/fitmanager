@@ -1,19 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = "";
-$dbname = "fitmanager";
+require_once "connex.php";
+$totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
+$totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
 
-// try {
-//     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     echo "Connected successfully (PDO)";
-// } catch(PDOException $e) {
-//     echo "Connection failed: " . $e->getMessage();
-// }
-// $conn = null; // Close connection
-// // Le nombre Total de cours 
-// $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -60,8 +49,8 @@ $dbname = "fitmanager";
       <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
         <div class="p-4 bg-blue-100 rounded-full"></div>
         <div>
-          <p class="text-gray-500 text-sm">Nombre de cours</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-total-cours">0</h3>
+            <p class="text-gray-500 text-sm">Nombre de cours</p>
+            <h3 class="text-2xl font-bold text-gray-800" id="card-total-cours"><?= $totalCours ?> </h3>
         </div>
       </div>
 
@@ -69,7 +58,7 @@ $dbname = "fitmanager";
         <div class="p-4 bg-green-100 rounded-full"></div>
         <div>
           <p class="text-gray-500 text-sm">Nombres d'Équipements</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements">0</h3>
+          <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements"><?=$totalEquip?></h3>
         </div>
       </div>
 

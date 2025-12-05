@@ -122,23 +122,23 @@ $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchA
 
       <h2 class="text-2xl font-semibold mb-4">Ajouter un équipement</h2>
 
-      <form method="POST">
-        <label for="nom" class="font-semibold text-gray-500">Nom :</label><br>
-        <input type="text" name="nom" placeholder="Entrer Le nom de l'equipe" required class="w-full p-2 border rounded mb-3">
-         <label for="type" class="font-semibold text-gray-500">Type :</label><br>
-        <input type="text" name="type" placeholder="Type" required class="w-full p-2 border rounded mb-3">
-        <label for="quantite" class="font-semibold text-gray-500">Quantité :</label><br>
-        <input type="number" name="quantite" placeholder="Quantité" min=0 required class="w-full p-2 border rounded mb-3">
-        <label for="etat" class="font-semibold text-gray-500">Etat :</label><br>
-        <select name="etat" required class="w-full p-2 border rounded mb-3">
-          <option value="">  Choisir l'état  </option>
-          <option value="bon">Bon</option>
-          <option value="moyen">Moyen</option>
-          <option value="a remplacer">A remplacer</option>
-        </select>
-        <button name="add" class="bg-green-500 text-white px-4 py-2 rounded">Ajouter</button>
-        <button type="button" onclick="document.getElementById('modal-add').classList.add('hidden')" class="bg-red-300 ml-2 text-white px-4 py-2 rounded">Annuler</button>
-      </form>
+        <form method="POST">
+            <label for="nom" class="font-semibold text-gray-500">Nom :</label><br>
+            <input type="text" name="nom" placeholder="Entrer Le nom de l'equipe" required class="w-full p-2 border rounded mb-3">
+            <label for="type" class="font-semibold text-gray-500">Type :</label><br>
+            <input type="text" name="type" placeholder="Type" required class="w-full p-2 border rounded mb-3">
+            <label for="quantite" class="font-semibold text-gray-500">Quantité :</label><br>
+            <input type="number" name="quantite" placeholder="Quantité" min=0 required class="w-full p-2 border rounded mb-3">
+            <label for="etat" class="font-semibold text-gray-500">Etat :</label><br>
+            <select name="etat" required class="w-full p-2 border rounded mb-3">
+            <option value="">  Choisir l'état  </option>
+            <option value="bon">Bon</option>
+            <option value="moyen">Moyen</option>
+            <option value="a remplacer">A remplacer</option>
+            </select>
+            <button name="add" class="bg-green-500 text-white px-4 py-2 rounded">Ajouter</button>
+            <button type="button" onclick="document.getElementById('modal-add').classList.add('hidden')" class="bg-red-300 ml-2 text-white px-4 py-2 rounded">Annuler</button>
+        </form>
 
     </div>
   </div>
@@ -149,29 +149,26 @@ $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchA
 
       <h2 class="text-2xl font-semibold mb-4">Modifier un équipement</h2>
 
-      <form method="POST">
+        <form method="POST">
+            <input type="hidden" name="equipe_ID" id="edit-id">
+            <label for="nom" class="font-semibold text-gray-500">Nom :</label><br>
+            <input type="text" name="nom" id="edit-nom" class="w-full p-2 border rounded mb-3" required>
+            <label for="type" class="font-semibold text-gray-500">Type :</label><br>
+            <input type="text" name="type" id="edit-type" class="w-full p-2 border rounded mb-3" required>
+            <label for="quantite" class="font-semibold text-gray-500">Quantité :</label><br>
+            <input type="number" name="quantite" id="edit-quantite" class="w-full p-2 border rounded mb-3" required>
+            <label for="etat" class="font-semibold text-gray-500">Etat :</label><br>
+            <select name="etat" id="edit-etat" class="w-full p-2 border rounded mb-3" required>
+                <option value="bon">Bon</option>
+                <option value="moyen">Moyen</option>
+                <option value="a remplacer">À remplacer</option>
+            </select>
 
-        <input type="hidden" name="equipe_ID" id="edit-id">
-        <label for="nom" class="font-semibold text-gray-500">Nom :</label><br>
-        <input type="text" name="nom" id="edit-nom" class="w-full p-2 border rounded mb-3" required>
-         <label for="type" class="font-semibold text-gray-500">Type :</label><br>
-        <input type="text" name="type" id="edit-type" class="w-full p-2 border rounded mb-3" required>
-        <label for="quantite" class="font-semibold text-gray-500">Quantité :</label><br>
-        <input type="number" name="quantite" id="edit-quantite" class="w-full p-2 border rounded mb-3" required>
-        <label for="etat" class="font-semibold text-gray-500">Etat :</label><br>
-        <select name="etat" id="edit-etat" class="w-full p-2 border rounded mb-3" required>
-            <option value="bon">Bon</option>
-            <option value="moyen">Moyen</option>
-            <option value="a remplacer">À remplacer</option>
-        </select>
-
-        <button name="update" class="bg-yellow-600 text-white px-4 py-2 rounded">Modifier</button>
-        <button type="button" onclick="document.getElementById('modal-edit').classList.add('hidden')" class="ml-2 bg-red-300 text-white px-4 py-2 rounded">Annuler</button>
-      </form>
-
+            <button name="update" class="bg-yellow-600 text-white px-4 py-2 rounded">Modifier</button>
+            <button type="button" onclick="document.getElementById('modal-edit').classList.add('hidden')" class="ml-2 bg-red-300 text-white px-4 py-2 rounded">Annuler</button>
+        </form>
     </div>
   </div>
-
   <!-- Script pour remplir le modal de modification -->
   <script>
     function openEditModal(id, nom, type, quantite, etat) {
