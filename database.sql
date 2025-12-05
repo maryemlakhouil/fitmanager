@@ -86,6 +86,7 @@ SELECT categorie, COUNT(*) AS total
 FROM cours
 WHERE categorie IS NOT NULL
 GROUP BY categorie;
+
 /* Récuperation ds equipements par leur type */
 
 SELECT type, COUNT(*) AS total 
@@ -93,4 +94,7 @@ FROM equipements
 WHERE type is not null 
 GROUP BY type;
 
+/* Le nombre de categorie de cours */
 
+SELECT COUNT(DISTINCT categorie) AS nb_categories
+FROM cours;

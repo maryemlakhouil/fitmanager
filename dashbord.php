@@ -20,6 +20,11 @@ $stmt2 = $pdo->query("SELECT type, COUNT(*) AS total
                      GROUP BY type");
 $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
+// Le types de cours 
+$typeCours = $pdo->query("SELECT COUNT(DISTINCT categorie)  FROM cours")->fetchColumn();
+// Les types D'equipements
+$typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->fetchColumn();
+
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +52,7 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Dashboard</a>
       <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
       <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Statistiques</a>
+      <a href="associative.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
     </nav>
   </aside>
@@ -63,46 +68,46 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <!-- les cartes des statistiques -->
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-      <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
-        <div class="p-4 bg-blue-100 rounded-full"></div>
-        <div>
-            <p class="text-gray-500 text-sm">Nombre de cours</p>
-            <h3 class="text-2xl font-bold text-gray-800" id="card-total-cours"><?= $totalCours ?> </h3>
+        <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
+            <div class="p-4 bg-blue-100 rounded-full"></div>
+            <div>
+                <p class="text-gray-500 text-sm">Nombre de cours</p>
+                <h3 class="text-2xl font-bold text-gray-800" id="card-total-cours"><?= $totalCours ?> </h3>
+            </div>
         </div>
-      </div>
 
-      <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
-        <div class="p-4 bg-green-100 rounded-full"></div>
-        <div>
-          <p class="text-gray-500 text-sm">Nombres d'Équipements</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements"><?=$totalEquip?></h3>
+        <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
+            <div class="p-4 bg-green-100 rounded-full"></div>
+            <div>
+            <p class="text-gray-500 text-sm">Nombres d'Équipements</p>
+            <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements"><?=$totalEquip?></h3>
+            </div>
         </div>
-      </div>
 
-    <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
-        <div class="p-4 bg-yellow-100 rounded-full"></div>
-        <div>
-          <p class="text-gray-500 text-sm">Types de cours</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours"></h3>
+        <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
+            <div class="p-4 bg-yellow-100 rounded-full"></div>
+            <div>
+            <p class="text-gray-500 text-sm">Types de cours</p>
+            <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours"><?=$typeCours?></h3>
+            </div>
         </div>
-    </div>
 
-      <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
-        <div class="p-4 bg-red-100 rounded-full"></div>
-        <div>
-          <p class="text-gray-500 text-sm">Types d'équipements</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-type-equipements">0</h3>
+        <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
+            <div class="p-4 bg-red-100 rounded-full"></div>
+            <div>
+            <p class="text-gray-500 text-sm">Types d'équipements</p>
+            <h3 class="text-2xl font-bold text-gray-800" id="card-type-equipements"><?=$typeEquipement?></h3>
+            </div>
         </div>
-      </div>
 
     </section>
     
     <!-- Charts Section les graphes -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
         <div class="bg-white shadow rounded-xl p-6">
             <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des cours par catégorie</h3>
 
-            <!-- <canvas id="chart-cours"></canvas> -->
             <!-- ligne : qui contient categorie et Total de chaque categorie -->
             <?php foreach ($coursParType as $ligne): ?>
                 <div class="flex justify-between border-b py-2">
@@ -114,7 +119,6 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="bg-white shadow rounded-xl p-6">
             <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des équipements par type</h3>
-            <!-- <canvas id="chart-equipements"></canvas> -->
                 <?php foreach ($equipParType as $ligne): ?>
                     <div class="flex justify-between border-b py-2">
                         <span><?= $ligne['type']?></span>
@@ -122,44 +126,10 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 <?php endforeach;?>
         </div>
+        
     </section>
     
   </main>
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- JS Dashboard Logic (à remplacer par tes données PHP) -->
-  <script>
-    // Exemple de données (remplacées via PHP ou fetch API)
-    const dataCours = {
-      labels: ['Yoga', 'Musculation', 'Cardio'],
-      values: [2, 1, 1]
-    };
-
-    const dataEquip = {
-      labels: ['Tapis de course', 'Haltères', 'Ballons'],
-      values: [1,1,2]
-    };
-
-    // Chart 1
-    new Chart(document.getElementById('chart-cours'), {
-      type: 'doughnut',
-      data: {
-        labels: dataCours.labels,
-        datasets: [{ data: dataCours.values }]
-      }
-    });
-
-    // Chart 2
-    new Chart(document.getElementById('chart-equipements'), {
-      type: 'bar',
-      data: {
-        labels: dataEquip.labels,
-        datasets: [{ data: dataEquip.values }]
-      }
-    });
-  </script>
 </body>
 </html>
 
