@@ -52,7 +52,7 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Dashboard</a>
       <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
       <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
-      <a href="associative.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
+      <a href="association.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
       <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
     </nav>
   </aside>
@@ -126,7 +126,7 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
                     </div>
                 <?php endforeach;?>
         </div>
-        
+
     </section>
     
   </main>

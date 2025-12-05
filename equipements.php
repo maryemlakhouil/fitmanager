@@ -55,7 +55,14 @@ $equipements = $pdo->query("SELECT * FROM equipements ORDER BY nom ASC")->fetchA
     <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="bg-gray-100 p-8">
-
+        <nav class="bg-gray-500 text-white p-4 ml-20 rounded-lg mb-6">
+    <ul class="flex gap-20 font-semibold">
+        <li><a href="dashbord.php" class="hover:text-[#4DA8DA]">Dashboard</a></li>
+        <li><a href="cours.php" class="hover:text-[#4DA8DA]">Cours</a></li>
+        <li><a href="equipements.php" class="hover:text-[#4DA8DA] underline">Équipements</a></li>
+        <li><a href="association.php" class="hover:text-[#4DA8DA]">Association</a></li>
+    </ul>
+   </nav>
     <div class="max-w-5xl mx-auto">
 
         <h1 class="text-3xl font-bold mb-6">Gestion des Équipements</h1>
