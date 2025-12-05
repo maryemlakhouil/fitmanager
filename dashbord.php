@@ -3,6 +3,23 @@ require_once "connex.php";
 $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
 $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
 
+// Récupération les cours par catégorie
+
+$stmt = $pdo->query("SELECT categorie, COUNT(*) AS total
+                        FROM cours
+                        WHERE categorie IS NOT NULL
+                        GROUP BY categorie;
+                    ");
+$coursParType = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Recuperation des equipements par type 
+
+$stmt2 = $pdo->query("SELECT type, COUNT(*) AS total 
+                        FROM equipements
+                        WHERE type is not null
+                     GROUP BY type");
+$equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -62,13 +79,13 @@ $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
         </div>
       </div>
 
-      <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
+    <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
         <div class="p-4 bg-yellow-100 rounded-full"></div>
         <div>
           <p class="text-gray-500 text-sm">Types de cours</p>
-          <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours">0</h3>
+          <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours"></h3>
         </div>
-      </div>
+    </div>
 
       <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
         <div class="p-4 bg-red-100 rounded-full"></div>
@@ -80,17 +97,31 @@ $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
 
     </section>
     
-    <!-- Charts Section -->
+    <!-- Charts Section les graphes -->
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div class="bg-white shadow rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Répartition des cours par catégorie</h3>
-        <canvas id="chart-cours"></canvas>
-      </div>
+        <div class="bg-white shadow rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des cours par catégorie</h3>
 
-      <div class="bg-white shadow rounded-xl p-6">
-        <h3 class="text-xl font-semibold mb-4 text-gray-800">Répartition des équipements par type</h3>
-        <canvas id="chart-equipements"></canvas>
-      </div>
+            <!-- <canvas id="chart-cours"></canvas> -->
+            <!-- ligne : qui contient categorie et Total de chaque categorie -->
+            <?php foreach ($coursParType as $ligne): ?>
+                <div class="flex justify-between border-b py-2">
+                    <span><?= $ligne['categorie']?></span>
+                    <span class="font-bold text-blue-600"><?= $ligne['total'] ?></span>
+                </div>
+            <?php endforeach;?>
+        </div>
+
+        <div class="bg-white shadow rounded-xl p-6">
+            <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des équipements par type</h3>
+            <!-- <canvas id="chart-equipements"></canvas> -->
+                <?php foreach ($equipParType as $ligne): ?>
+                    <div class="flex justify-between border-b py-2">
+                        <span><?= $ligne['type']?></span>
+                        <span class="font-bold text-green-600"><?= $ligne['total'] ?></span>
+                    </div>
+                <?php endforeach;?>
+        </div>
     </section>
     
   </main>
@@ -99,16 +130,16 @@ $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- JS Dashboard Logic (à remplacer par tes données PHP) -->
-  <!-- <script>
+  <script>
     // Exemple de données (remplacées via PHP ou fetch API)
     const dataCours = {
       labels: ['Yoga', 'Musculation', 'Cardio'],
-      values: [12, 8, 5]
+      values: [2, 1, 1]
     };
 
     const dataEquip = {
       labels: ['Tapis de course', 'Haltères', 'Ballons'],
-      values: [10, 25, 15]
+      values: [1,1,2]
     };
 
     // Chart 1
@@ -128,7 +159,7 @@ $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
         datasets: [{ data: dataEquip.values }]
       }
     });
-  </script> -->
+  </script>
 </body>
 </html>
 

@@ -80,3 +80,17 @@ DELETE FROM equipements where equipe_ID=1;
 
 SELECT * FROM equipements ORDER BY nom DESC;
 
+/*Récupération des cours par catégorie*/
+
+SELECT categorie, COUNT(*) AS total
+FROM cours
+WHERE categorie IS NOT NULL
+GROUP BY categorie;
+/* Récuperation ds equipements par leur type */
+
+SELECT type, COUNT(*) AS total 
+FROM equipements
+WHERE type is not null 
+GROUP BY type;
+
+
