@@ -2,10 +2,20 @@
 require_once "connex.php";
 
 // Traitement du formulaire
+
 if (isset($_POST['associer'])) {
     $stmt = $pdo->prepare("INSERT INTO cours_equipements (courId, equipe_ID)
                            VALUES (?, ?)");
     $stmt->execute([$_POST['courId'], $_POST['equipe_ID']]);
+}
+
+// Supprimer une association
+
+if (isset($_POST['delete_assoc'])) {
+    $stmt = $pdo->prepare("DELETE FROM cours_equipements WHERE ID = ?");
+    $stmt->execute([$_POST['assoc_id']]);
+    header("Location: association.php");
+    exit;
 }
 
 // Récupérer tous les cours avec leurs ids
@@ -22,14 +32,6 @@ $assoc = $pdo->query("
     JOIN cours c ON ce.courId = c.courId
     JOIN equipements e ON ce.equipe_ID = e.equipe_ID
 ")->fetchAll(PDO::FETCH_ASSOC);
-
-// Supprimer une association
-if (isset($_POST['delete_assoc'])) {
-    $stmt = $pdo->prepare("DELETE FROM cours_equipements WHERE ID = ?");
-    $stmt->execute([$_POST['assoc_id']]);
-    header("Location: association.php");
-    exit;
-}
 
 ?>
 
@@ -81,38 +83,38 @@ if (isset($_POST['delete_assoc'])) {
         </button>
     </form>
 
-    <!-- TABLEAU DES ASSOCIATIONS -->
-    <div class="bg-white p-6 rounded-xl shadow w-2/3">
-        <h3 class="text-xl font-semibold text-gray-600 mb-4">Associations existantes</h3>
-        
-      <table class="w-full border-collapse">
-    <thead class="bg-gray-200 text-gray-700">
-        <tr>
-            <th class="p-2">Cours</th>
-            <th class="p-2">Équipement</th>
-            <th class="p-2 text-center">Action</th>
-        </tr>
-    </thead>
+        <!-- Tableau de associations  -->
+        <div class="bg-white p-6 rounded-xl shadow w-2/3">
+            <h3 class="text-xl font-semibold text-gray-600 mb-4">Associations existantes</h3>
+            
+        <table class="w-full border-collapse">
+        <thead class="bg-gray-200 text-gray-700">
+            <tr>
+                <th class="p-2">Cours</th>
+                <th class="p-2">Équipement</th>
+                <th class="p-2 text-center">Action</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <?php foreach ($assoc as $a): ?>
-        <tr class="border-b hover:bg-gray-100">
-            <td class="p-2"><?= $a['coursNom'] ?></td>
-            <td class="p-2"><?= $a['equipNom'] ?></td>
-            <td class="p-2 text-center">
-                <form method="POST" onsubmit="return confirm('Voulez-vous vraiment délier cet équipement ?');">
-                    <input type="hidden" name="assoc_id" value="<?= $a['ID'] ?>">
-                    <button name="delete_assoc" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
-                        Délier
-                    </button>
-                </form>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        <tbody>
+            <?php foreach ($assoc as $a): ?>
+            <tr class="border-b hover:bg-gray-100">
+                <td class="p-2"><?= $a['coursNom'] ?></td>
+                <td class="p-2"><?= $a['equipNom'] ?></td>
+                <td class="p-2 text-center">
+                    <form method="POST" onsubmit="return confirm('Voulez-vous vraiment délier cet équipement ?');">
+                        <input type="hidden" name="assoc_id" value="<?= $a['ID'] ?>">
+                        <button name="delete_assoc" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700">
+                            Délier
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+        </table>
 
-    </div>
+        </div>
 
 </div>
 
