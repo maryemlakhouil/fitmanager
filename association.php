@@ -84,8 +84,8 @@ $assoc = $pdo->query("
     </form>
 
         <!-- Tableau de associations  -->
-        <div class="bg-white p-6 rounded-xl shadow w-2/3">
-            <h3 class="text-xl font-semibold text-gray-600 mb-4">Associations existantes</h3>
+    <div class="bg-white p-6 rounded-xl shadow w-2/3">
+        <h3 class="text-xl font-semibold text-gray-600 mb-4">Associations existantes</h3>
             
         <table class="w-full border-collapse">
         <thead class="bg-gray-200 text-gray-700">
@@ -114,7 +114,7 @@ $assoc = $pdo->query("
         </tbody>
         </table>
 
-        </div>
+    </div>
 
 </div>
 
