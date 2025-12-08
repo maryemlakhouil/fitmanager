@@ -39,9 +39,9 @@ $assoc = $pdo->query("
         <li><a href="association.php" class="hover:text-[#4DA8DA] underline">Association</a></li>
     </ul>
    </nav>
-<h2 class="text-2xl font-bold mb-6 text-center">Associer un équipement à un cours</h2>
+<h2 class="text-2xl font-bold mb-6 text-center text-gray-600">Associer un équipement à un cours</h2>
 
-<form method="POST" class="bg-white p-6 rounded-xl shadow w-1/2 mx-auto space-y-4">
+<form method="POST" class="bg-white p-6 rounded-xl w-1/2 mx-auto space-y-4">
 
     <label class="block font-semibold">Cours :</label>
     <select name="courId" class="w-full border rounded p-2" required>
