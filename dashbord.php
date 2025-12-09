@@ -66,7 +66,7 @@ foreach ($equipParType as $e) {
       <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
       <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
       <a href="association.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
-      <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
+      <a href="register.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
     </nav>
   </aside>
 

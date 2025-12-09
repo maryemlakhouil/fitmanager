@@ -1,3 +1,4 @@
+drop table users;
 /*Creation du Base De donnée*/
 create DATABASE Fitmanager;
 USE Fitmanager;
@@ -100,3 +101,11 @@ SELECT COUNT(DISTINCT categorie) AS nb_categories
 FROM cours;
 
 /*Céation Du table Users Pour Authentification */
+
+create table users(
+    id int auto_increment Primary key,
+    nom varchar(50) Not null,
+    email varchar(50) unique ,
+    password varchar(50) not null
+);
+alter table users modify password varchar(255);
