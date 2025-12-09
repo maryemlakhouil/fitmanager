@@ -1,11 +1,13 @@
 <?php
 require_once "connex.php";
+
 session_start();
 
+// Pour stocke un message d'erreur 
 $message = "";
 
-if (isset($_POST['register'])) {
 
+if (isset($_POST['register'])) {
     // Vérifier si l’email existe déjà
     $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
     $check->execute([$_POST['email']]);
