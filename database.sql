@@ -98,3 +98,5 @@ GROUP BY type;
 
 SELECT COUNT(DISTINCT categorie) AS nb_categories
 FROM cours;
+
+/*Céation Du table Users Pour Authentification */
