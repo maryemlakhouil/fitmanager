@@ -50,14 +50,15 @@ $assoc = $pdo->query("
         <li><a href="equipements.php" class="hover:text-[#4DA8DA]">Équipements</a></li>
         <li><a href="association.php" class="hover:text-[#4DA8DA] underline">Association</a></li>
     </ul>
-   </nav><h2 class="text-3xl font-bold mb-8 text-center text-gray-700">Gestion des Associations</h2>
+</nav>
+<h2 class="text-3xl font-bold mb-8 text-center text-gray-500">Gestion des Associations</h2>
 
 <div class="flex gap-8 max-w-6xl mx-auto">
     
-    <!-- FORMULAIRE -->
+    <!-- Une simple form Pour associer un cours a un equipement -->
+
     <form method="POST" class="bg-white p-6 rounded-xl shadow w-1/3 space-y-4">
         <h3 class="text-xl font-semibold text-gray-600 mb-2">Associer</h3>
-
         <div>
             <label class="block font-semibold mb-1">Cours</label>
             <select name="courId" class="w-full border rounded p-2" required>
@@ -113,11 +114,8 @@ $assoc = $pdo->query("
             <?php endforeach; ?>
         </tbody>
         </table>
-
     </div>
-
 </div>
-
 
 </body>
 </html>

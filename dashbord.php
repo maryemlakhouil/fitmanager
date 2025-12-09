@@ -1,6 +1,9 @@
 <?php
 require_once "connex.php";
+
+// Nombre total de cours
 $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
+// Nombre total des equipements
 $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
 
 // Récupération les cours par catégorie
@@ -24,6 +27,15 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 $typeCours = $pdo->query("SELECT COUNT(DISTINCT categorie)  FROM cours")->fetchColumn();
 // Les types D'equipements
 $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->fetchColumn();
+$dataCours = [];
+foreach ($coursParType as $c) {
+    $dataCours[] = ["label" => $c['categorie'], "total" => (int)$c['total']];
+}
+
+$dataEquip = [];
+foreach ($equipParType as $e) {
+    $dataEquip[] = ["label" => $e['type'], "total" => (int)$e['total']];
+}
 
 ?>
 
@@ -34,6 +46,7 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FitManager - Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -107,7 +120,7 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
 
         <div class="bg-white shadow rounded-xl p-6">
             <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des cours par catégorie</h3>
-
+            <canvas id="chart-cours"></canvas>
             <!-- ligne : qui contient categorie et Total de chaque categorie -->
             <?php foreach ($coursParType as $ligne): ?>
                 <div class="flex justify-between border-b py-2">
@@ -119,6 +132,7 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
 
         <div class="bg-white shadow rounded-xl p-6">
             <h3 class="text-xl font-semibold mb-4 text-gray-600">Répartition des équipements par type</h3>
+            <canvas id="chart-equipements"></canvas>
                 <?php foreach ($equipParType as $ligne): ?>
                     <div class="flex justify-between border-b py-2">
                         <span><?= $ligne['type']?></span>
@@ -130,6 +144,39 @@ $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->f
     </section>
     
   </main>
+  
+
+<script>
+    // Données envoyées depuis PHP vers JS
+    const dataCours = <?= json_encode($dataCours) ?>;
+    const dataEquip = <?= json_encode($dataEquip) ?>;
+
+    // Graphique Cours - Doughnut
+    new Chart(document.getElementById('chart-cours'), {
+        type: 'doughnut',
+        data: {
+            labels: dataCours.map(item => item.label),
+           datasets: [{
+    data: dataCours.map(item => item.total),
+    backgroundColor: ["#2563eb", "#7c3aed", "#f59e0b", "#ef4444", "#10b981"]
+}]
+
+        }
+    });
+
+    // Graphique Équipements - Bar
+    new Chart(document.getElementById('chart-equipements'), {
+        type: 'doughnut',
+        data: {
+            labels: dataEquip.map(item => item.label),
+          datasets: [{
+    data: dataEquip.map(item => item.total),
+    backgroundColor: ["#374151", "#059669", "#f43f5e", "#0ea5e9", "#8b5cf6"]
+}]
+        }
+    });
+</script>
+
 </body>
 </html>
 
