@@ -1,5 +1,7 @@
 <?php
+require_once 'checker.php';
 require_once "connex.php";
+
 
 /*---------------  Ajouter Un Equipements -------------- */
 

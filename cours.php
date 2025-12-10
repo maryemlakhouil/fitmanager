@@ -1,5 +1,7 @@
 <?php
+require_once 'checker.php';
 require_once "connex.php";
+
 
 /* ----------------------- AJOUTER UN COURS ------------------------ */
 if (isset($_POST['add'])) {

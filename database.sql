@@ -108,4 +108,14 @@ create table users(
     email varchar(50) unique ,
     password varchar(50) not null
 );
+/* Modifier le colonne Password */
+
 alter table users modify password varchar(255);
+
+/* Inserer Dans La table Users*/
+
+insert into users(nom,email,password) values('maryem','lkhwil@gmail.com','lakhouil2003');
+
+/*Lister les users */
+
+select * from users;

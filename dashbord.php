@@ -1,5 +1,7 @@
 <?php
+require_once "checker.php";
 require_once "connex.php";
+
 
 // Nombre total de cours
 $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
@@ -66,7 +68,7 @@ foreach ($equipParType as $e) {
       <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
       <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
       <a href="association.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
-      <a href="register.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
+      <a href="logout.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
     </nav>
   </aside>
 
