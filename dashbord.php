@@ -2,9 +2,9 @@
 require_once "checker.php";
 require_once "connex.php";
 
-
 // Nombre total de cours
 $totalCours = $pdo->query("SELECT COUNT(*) FROM cours")->fetchColumn();
+
 // Nombre total des equipements
 $totalEquip = $pdo->query("SELECT COUNT(*) FROM equipements")->fetchColumn();
 
@@ -27,8 +27,10 @@ $equipParType = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
 // Le types de cours 
 $typeCours = $pdo->query("SELECT COUNT(DISTINCT categorie)  FROM cours")->fetchColumn();
+
 // Les types D'equipements
 $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->fetchColumn();
+
 $dataCours = [];
 foreach ($coursParType as $c) {
     $dataCours[] = ["label" => $c['categorie'], "total" => (int)$c['total']];
