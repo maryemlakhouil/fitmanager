@@ -60,24 +60,24 @@ foreach ($equipParType as $e) {
     body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-    <body class="bg-gray-100 min-h-screen flex">
-    <!-- La Partie Sidebar -->
 
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- La Partie Sidebar -->
     <aside class="w-64 bg-gray-700 text-white flex flex-col p-6 space-y-6">
         <h1 class="text-2xl font-bold tracking-wide">FitManager</h1>
-
         <nav class="flex flex-col space-y-3">
-        <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Dashboard</a>
-        <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
-        <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
-        <a href="association.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
-        <a href="logout.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
+            <a href="#" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Dashboard</a>
+            <a href="cours.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Cours</a>
+            <a href="equipements.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Équipements</a>
+            <a href="association.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Association</a>
+            <a href="logout.php" class="px-4 py-2 rounded-lg hover:bg-gray-700 transition">Déconnexion</a>
         </nav>
     </aside>
 
     <main class="flex-1 p-8 space-y-8">
-        <!-- Le Titre  -->
 
+        <!-- Le Titre  -->
         <header>
         <h2 class="text-3xl font-semibold text-gray-800">Dashboard d'equipe</h2>
         <p class="text-gray-600">Vue d'ensemble de la salle de sport</p>
@@ -97,27 +97,26 @@ foreach ($equipParType as $e) {
             <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
                 <div class="p-4 bg-green-100 rounded-full"></div>
                 <div>
-                <p class="text-gray-500 text-sm">Nombres d'Équipements</p>
-                <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements"><?=$totalEquip?></h3>
+                    <p class="text-gray-500 text-sm">Nombres d'Équipements</p>
+                    <h3 class="text-2xl font-bold text-gray-800" id="card-total-equipements"><?=$totalEquip?></h3>
                 </div>
             </div>
 
             <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
                 <div class="p-4 bg-yellow-100 rounded-full"></div>
                 <div>
-                <p class="text-gray-500 text-sm">Types de cours</p>
-                <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours"><?=$typeCours?></h3>
+                    <p class="text-gray-500 text-sm">Types de cours</p>
+                    <h3 class="text-2xl font-bold text-gray-800" id="card-type-cours"><?=$typeCours?></h3>
                 </div>
             </div>
 
             <div class="bg-white shadow rounded-xl p-6 flex items-center space-x-4">
                 <div class="p-4 bg-red-100 rounded-full"></div>
                 <div>
-                <p class="text-gray-500 text-sm">Types d'équipements</p>
-                <h3 class="text-2xl font-bold text-gray-800" id="card-type-equipements"><?=$typeEquipement?></h3>
+                    <p class="text-gray-500 text-sm">Types d'équipements</p>
+                    <h3 class="text-2xl font-bold text-gray-800" id="card-type-equipements"><?=$typeEquipement?></h3>
                 </div>
             </div>
-
         </section>
         
         <!-- Charts Section les graphes -->
