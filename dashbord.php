@@ -31,16 +31,16 @@ $typeCours = $pdo->query("SELECT COUNT(DISTINCT categorie)  FROM cours")->fetchC
 // Les types D'equipements
 $typeEquipement = $pdo->query("SELECT COUNT(DISTINCT type) from equipements")->fetchColumn();
 
+// data cours pour les graphiques
 $dataCours = [];
 foreach ($coursParType as $c) {
     $dataCours[] = ["label" => $c['categorie'], "total" => (int)$c['total']];
 }
-
+//  data equipements pour equipements
 $dataEquip = [];
 foreach ($equipParType as $e) {
     $dataEquip[] = ["label" => $e['type'], "total" => (int)$e['total']];
 }
-
 ?>
 
 <!DOCTYPE html>
