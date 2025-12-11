@@ -1,4 +1,10 @@
-drop table users;
+/* Supprimer Toutes les tables  */
+
+DROP TABLE  cours_equipements;
+DROP TABLE  equipements;
+DROP TABLE  cours;
+DROP TABLE  users;
+
 /*Creation du Base De donnée*/
 create DATABASE Fitmanager;
 USE Fitmanager;
