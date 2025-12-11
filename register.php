@@ -55,7 +55,7 @@ if (isset($_POST['register'])) {
             <h2 class="text-white text-3xl font-bold mt-10">Créez un compte</h2>
             <p class="text-white mt-4">Rejoignez notre salle de sport dès maintenant</p>
         </div>
-        
+        <!-- Form de inscription -->
         <div class="w-1/2 p-8">
             <h2 class="text-2xl font-bold text-gray-700 mb-6">Inscription</h2>
 
