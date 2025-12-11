@@ -119,7 +119,7 @@ foreach ($equipParType as $e) {
             </div>
         </section>
         
-        <!-- Charts Section les graphes -->
+        <!-- Section Pour les graphes -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
             <div class="bg-white shadow rounded-xl p-6">
@@ -148,8 +148,7 @@ foreach ($equipParType as $e) {
         </section>
         
     </main>
-    
-
+    <!-- La Partie JavaScript-->
     <script>
         // Données envoyées depuis PHP vers JS
         const dataCours = <?= json_encode($dataCours) ?>;
@@ -160,10 +159,10 @@ foreach ($equipParType as $e) {
             type: 'doughnut',
             data: {
                 labels: dataCours.map(item => item.label),
-            datasets: [{
-        data: dataCours.map(item => item.total),
-        backgroundColor: ["#2563eb", "#7c3aed", "#f59e0b", "#ef4444", "#10b981"]
-    }]
+                datasets: [{
+                    data: dataCours.map(item => item.total),
+                    backgroundColor: ["#2563eb", "#7c3aed", "#f59e0b", "#ef4444", "#10b981"]
+                }]
 
             }
         });
@@ -173,10 +172,10 @@ foreach ($equipParType as $e) {
             type: 'doughnut',
             data: {
                 labels: dataEquip.map(item => item.label),
-            datasets: [{
-        data: dataEquip.map(item => item.total),
-        backgroundColor: ["#374151", "#059669", "#f43f5e", "#0ea5e9", "#8b5cf6"]
-    }]
+                datasets: [{
+                    data: dataEquip.map(item => item.total),
+                    backgroundColor: ["#374151", "#059669", "#f43f5e", "#0ea5e9", "#8b5cf6"]
+                }]
             }
         });
     </script>
