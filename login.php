@@ -1,13 +1,12 @@
 <?php
-// login.php
-require_once "connex.php";   // 1
-session_start();            // 2
+require_once "connex.php";  
+session_start();          
+// Pour stocker un message d'erreur
+$error = "";
 
-$error = "";                // 3
-
-if (isset($_POST['login'])) {                       // 4
-    $email = trim($_POST['email']);                 // 5
-    $password = $_POST['password'];                 // 6
+if (isset($_POST['login'])) {                      
+    $email = trim($_POST['email']);                 
+    $password = $_POST['password'];                 
 
     // Préparer la requête pour récupérer l'utilisateur par email
     $stmt = $pdo->prepare("SELECT id, nom, email, password FROM users WHERE email = ? LIMIT 1"); // 7
