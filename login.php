@@ -9,11 +9,11 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];                 
 
     // Préparer la requête pour récupérer l'utilisateur par email
-    $stmt = $pdo->prepare("SELECT id, nom, email, password FROM users WHERE email = ? LIMIT 1"); // 7
-    $stmt->execute([$email]);                       // 8
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);         // 9
+    $stmt = $pdo->prepare("SELECT id, nom, email, password FROM users WHERE email = ? LIMIT 1"); 
+    $stmt->execute([$email]);                       
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);         
 
-    if ($user) {                                    // 10
+    if ($user) {                                    
         // Vérifier le mot de passe avec le hash stocké
         if (password_verify($password, $user['password'])) { // 11
             // Mot de passe OK -> initialiser la session
