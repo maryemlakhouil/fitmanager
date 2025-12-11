@@ -48,28 +48,33 @@ select * from cours;
 select * from equipements;
 select * from cours_equipements;
 select * from cours order by dateDebut desc;
+SELECT * FROM equipements ORDER BY nom DESC;
 
-/* Ajouter Un colonne au tableau sans form*/
+/***************************
+        INSERTION  
+*************************/
+
+/* Ajouter Dans cours */
 insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours1","yoga","2025-2-3","2026-3-4",4,20);
 insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours2","Musculation","2025-11-3","2026-12-4",300,20);
 insert into cours(nom,categorie,dateDebut,dateFin,heure,nbmax) values("cours3","Cardio","2025-11-3","2026-12-4",11300,20);
 
-/*Supprimer Un cours du tableau cours*/
-
-delete from cours where courId = 6;
-
-/*Modifier Un cours */
-
-Update cours
-    SET nom="sience", categorie="Yoga", nbmax=30
-    WHERE courId=7;
-
 /* Ajouter Un equipement */
-
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe1","Tapis de course", 7, "bon")
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe2","Haltères", 17, "bon")
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe3","Ballons", 17, "moyen")
 INSERT INTO equipements (nom, type, quantite, etat) VALUES ("equipe4","Ballons", 20, "bon")
+
+
+
+/*Supprimer Un cours du tableau cours*/
+delete from cours where courId = 6;
+
+/*Modifier Un cours */
+Update cours
+    SET nom="sience", categorie="Yoga", nbmax=30
+    WHERE courId=7;
+
 
 /*Modifier Un equipements */
 
@@ -78,12 +83,7 @@ Update equipements
     WHERE equipe_ID=1;
 
 /* Suprimer Un Equipements */
-
 DELETE FROM equipements where equipe_ID=1;
-
-/*Consulter la liste d'equipements*/
-
-SELECT * FROM equipements ORDER BY nom DESC;
 
 /*Récupération des cours par catégorie*/
 
