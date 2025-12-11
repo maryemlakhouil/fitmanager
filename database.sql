@@ -10,8 +10,8 @@ create DATABASE Fitmanager;
 USE Fitmanager;
 
 /* création des tables */
-/* Table cours */
 
+/* Table cours */
 create table cours(
     courId int auto_increment primary key,
     nom varchar(50) not null,
@@ -23,7 +23,6 @@ create table cours(
 );
 
 /* Table equipements */
-
 create table equipements(
     equipe_ID int auto_increment primary key,
     nom varchar(50)not null,
@@ -34,7 +33,6 @@ create table equipements(
 );
 
 /* table Associative */
-
 create table cours_equipements(
     ID int auto_increment primary key,
     courId int not null ,
