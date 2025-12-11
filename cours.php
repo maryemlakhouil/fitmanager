@@ -2,7 +2,6 @@
 require_once 'checker.php';
 require_once "connex.php";
 
-
 /* ----------------------- AJOUTER UN COURS ------------------------ */
 if (isset($_POST['add'])) {
     $stmt = $pdo->prepare("INSERT INTO cours (nom, categorie, dateDebut, dateFin, heure, nbmax)
@@ -183,7 +182,6 @@ $cours = $pdo->query("SELECT * FROM cours ORDER BY dateDebut DESC")->fetchAll(PD
       document.getElementById('edit-nbmax').value = nbmax;
       document.getElementById('modal-edit').classList.remove('hidden');
     }
-
   </script>
 </body>
 </html>

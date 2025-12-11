@@ -179,7 +179,6 @@ foreach ($equipParType as $e) {
             }
         });
     </script>
-
     </body>
 </html>
 
